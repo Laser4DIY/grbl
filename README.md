@@ -1,8 +1,7 @@
 # Grbl - Laser4DIY edition #
 
 
-This is a GRBL fork based on the Mr Beam grbl 0.9 firmware.
-This is a modified version of the grbl v0.9. 
+This is a GRBL fork based on the Mr Beam firmware, which is a modified version of grbl v0.9. 
 
 ### Changes (compared to the Mr Beam version)
 
