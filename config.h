@@ -160,8 +160,8 @@
 // max rpm, and 250 min rpm, the spindle output voltage would be set for the following "S" commands: 
 // "S1000" @ 5V, "S250" @ 0.02V, and "S625" @ 2.5V (mid-range). The pin outputs 0V when disabled.
 //#define SPINDLE_MAX_RPM 1005.0 // Max spindle RPM. This value is equal to 100% duty cycle on the PWM.
-#define SPINDLE_MAX_RPM 2000.0 // Max spindle RPM. This value is equal to 100% duty cycle on the PWM.
-#define SPINDLE_MIN_RPM 8.0    // Min spindle RPM. This value is equal to (1/256) duty cycle on the PWM.
+#define SPINDLE_MAX_RPM 255 // Max spindle RPM. This value is equal to 100% duty cycle on the PWM.
+#define SPINDLE_MIN_RPM 0   // Min spindle RPM. This value is equal to (1/256) duty cycle on the PWM.
 
 // This need variable spinle enabaled. Lasers don't need time to speed up or slow down and the build 
 // in dwelling for spindels will be disabled. 
