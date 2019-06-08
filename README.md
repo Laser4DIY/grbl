@@ -1,43 +1,12 @@
-# Grbl - Mr Beam Edition #
-
-Mr Beam uses grbl for stepper motor and laser control for its portable and affordable laser cutter and engraver kits. It runs on an Arduino Uno and requires a Mr Beam Shield [Mr Beam Shield](http://shop.mr-beam.org/product/mr-beam-shield) for driving motors and the laser.
-
-This is a modified version of the grbl v0.9. The original grbl description follows.
+# Grbl - Laser4DIY edition #
 
 
-### Prerequisites (Linux)
-```bash
-sudo apt install gcc-avr
-sudo apt-get install avr-libc
-sudo apt-get install avrdude
-```
+This is a GRBL fork based on the Mr Beam grbl 0.9 firmware.
+This is a modified version of the grbl v0.9. 
 
+### Changes (compared to the Mr Beam version)
 
-## How to flash Grbl on Mr Beam II ##
-
-    > ./flash_grbl.sh grbl_optiboot_22270fa.hex
-
-### READ hex file: ###
-`avrdude -c avrispmkII -p atmega328p -U flash:r:<filename.hex>:i`
-
-### WRITE hex file: ###
-`avrdude -c avrispmkII -p atmega328p -U flash:w:grbl_optiboot_22270fa.hex -U efuse:w:0xff:m -U hfuse:w:0xde:m -U lfuse:w:0xff:m -U lock:w:0xff:m`
-
--D Disable auto erase for flash (not recommended)
-
-
-#### Fuse Values: ###
-    EFUSE: 0xFC
-    HFUSE: 0xDE 
-    LFUSE: 0xFF 
-    LOCK:  0xCF 
-
-
-#### Write from Raspberry Pi: #### 
-`avrdude -c arduino -p atmega328p -U flash:w:grbl_with_optiboot.hex`
-
-Existing Grbl must include bootloaded for this to work.
-
-Flo says: this works only with his patched version of `avrdude`. And it’s also a bit flaky.
-
-More about flashing: https://docs.google.com/document/d/1KYD-67uyJthAYrTPURkSN8l7AVauc4Yw4M08CVyAFd0/edit#
+* Increased laser pwm frquency to 62.5kHz (GRBL "spindle control")
+* laser power range set to 0..255
+  * M3 S0 sets minimum of (1/256) pwm duty cycle
+  * M3 S255 set maximum, i.e. 100% pwm duty cycle
