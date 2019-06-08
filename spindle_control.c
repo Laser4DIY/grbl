@@ -86,7 +86,8 @@ void spindle_stop()
   {
     // TODO: Install the optional capability for frequency-based output for servos.
     TCCRA_REGISTER = (1<<COMB_BIT) | (1<<WAVE1_REGISTER) | (1<<WAVE0_REGISTER);
-    TCCRB_REGISTER = (TCCRB_REGISTER & 0b11111000) | 0x02; // set to 1/8 Prescaler
+    //TCCRB_REGISTER = (TCCRB_REGISTER & 0b11111000) | 0x02; // set to 1/8 Prescaler
+    TCCRB_REGISTER = (TCCRB_REGISTER & 0b11111000) | 0x01; // set to 1/1 Prescaler
   }
 
   void spindle_rpm_update(uint8_t pwm)
